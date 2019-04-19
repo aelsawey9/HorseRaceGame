@@ -1,4 +1,5 @@
 import java.awt.*;
+
 import javax.swing.*;
 
 public class MainMenu extends JFrame {
@@ -7,25 +8,23 @@ public class MainMenu extends JFrame {
     private OptionsPanel options;
 
     public MainMenu() {
-
+        
         super("Main Menu"); // frame/window titled Main Menu
-        this.getContentPane().setBackground(Color.black);
+
+        this.getContentPane().setBackground(Color.BLACK);
 
         //PLay with the font to make it a proper header
-        Font f = new Font("Verdana", Font.BOLD, 32);
+        Font f = new Font("Verdana", Font.BOLD, 45);
         gameName.setVerticalAlignment(SwingConstants.TOP);
         gameName.setFont(f);
+        gameName.setOpaque(true);
+        gameName.setBackground(Color.BLACK);
         gameName.setForeground(Color.WHITE);
 
         setLayout(new BorderLayout());
         this.options = new OptionsPanel();
+        options.setMain(this);
         add(options, BorderLayout.CENTER);
-
-        /*
-
-        GridBagLayout or just GridLayout is better to use?
-
-        */
 
         this.add(gameName, BorderLayout.NORTH);
 
@@ -34,6 +33,32 @@ public class MainMenu extends JFrame {
         setSize(800, 600);
         setLocationRelativeTo(null); // center the frame
         setVisible(true); // after all these modifications, make the frame visible
+    }
+
+	public void whiteTheme() {
+
+        setVisible(false);
+
+        this.setBackground(Color.WHITE);
+        gameName.setBackground(Color.WHITE);
+        gameName.setForeground(Color.MAGENTA);
+        gameName.setOpaque(true);
+
+        setVisible(true); // after all these modifications, make the frame visible
+        
+    }
+    
+    public void darkTheme() {
+
+        setVisible(false);
+
+        this.setBackground(Color.BLACK);
+        gameName.setBackground(Color.BLACK);
+        gameName.setForeground(Color.WHITE);
+        gameName.setOpaque(true);
+
+        setVisible(true); // after all these modifications, make the frame visible
+       
     }
 
 }
