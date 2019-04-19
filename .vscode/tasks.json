@@ -1,0 +1,33 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "taskName": "compile",
+            "command": "java",
+            "windows": {
+                "command": "C:\\Program Files\\Java\\jdk-11.0.1\\bin\\javac.exe"
+            },
+            "args": [
+                "${file}"
+            ]
+        },
+        {
+            "taskName": "run",
+            "command": "java",
+            "windows": {
+                "command": "C:\\Program Files\\Java\\jdk-11.0.1\\bin\\java.exe",
+            },
+            "args": [
+                "-cp",
+                "${fileDirname}",
+                "${fileBasenameNoExtension}"
+            ],
+            //"showOutput": "always",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+    
+}
