@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.util.HashMap;
 
 import javax.swing.*;
 
@@ -6,6 +7,11 @@ public class MainMenu extends JFrame {
     private static final long serialVersionUID = 1L; // no clue what that is but it made the code work
     private JLabel gameName = new JLabel("Animal Race", SwingConstants.CENTER);
     private OptionsPanel options;
+    private GameScreen game;
+    private boolean darkTheme = true;
+    private int oneGameOnly = 1;
+    private Visual actualTrack;
+    private HashMap<String, Animal> animalMap = new HashMap<String, Animal>();
 
     public MainMenu() {
         
@@ -23,7 +29,7 @@ public class MainMenu extends JFrame {
 
         setLayout(new BorderLayout());
         this.options = new OptionsPanel();
-        options.setMain(this);
+        this.options.setMain(this);
         add(options, BorderLayout.CENTER);
 
         this.add(gameName, BorderLayout.NORTH);
@@ -59,6 +65,23 @@ public class MainMenu extends JFrame {
 
         setVisible(true); // after all these modifications, make the frame visible
        
+    }
+
+    public boolean getTheme() {
+        return this.darkTheme;
+    }
+
+	public void setTheme(boolean b) {
+        this.darkTheme = b;
+    }
+    
+    public void makeGameScreen() {
+        if (oneGameOnly > 0) {
+            this.game = new GameScreen();
+            this.game.setMain(this);
+            this.game.gameBackground();
+            this.oneGameOnly--;
+        }
     }
 
 }

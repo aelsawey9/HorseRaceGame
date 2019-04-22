@@ -1,9 +1,5 @@
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
-
+import java.awt.event.*;
 import javax.swing.*;
 
 public class OptionsPanel extends JPanel implements ActionListener, ItemListener {
@@ -26,9 +22,11 @@ public class OptionsPanel extends JPanel implements ActionListener, ItemListener
         play = new JButton("Play");
         play.setBackground(Color.GREEN);
         play.setFont(new Font("Arial", Font.BOLD, 16));
+        play.setFocusPainted(false);
         toggle = new JToggleButton("Press to change theme");
         toggle.setBackground(Color.CYAN);
         toggle.setFont(new Font("Verdana", Font.BOLD, 12));
+        toggle.setFocusPainted(false);
 
         play.addActionListener(this);
         toggle.addItemListener(this);
@@ -64,7 +62,9 @@ public class OptionsPanel extends JPanel implements ActionListener, ItemListener
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        
+        if (e.getSource() == this.play) {
+            this.main.makeGameScreen();
+        }
     }
 
     @Override
@@ -73,11 +73,13 @@ public class OptionsPanel extends JPanel implements ActionListener, ItemListener
                 toggle.setBackground(Color.ORANGE);
                 this.setBackground(Color.WHITE);
                 this.main.whiteTheme();
+                this.main.setTheme(false);
             }
             else if (e.getStateChange() == ItemEvent.DESELECTED) {
                 toggle.setBackground(Color.CYAN);
                 this.setBackground(Color.BLACK);
                 this.main.darkTheme();
+                this.main.setTheme(true);
             }
         
     }
