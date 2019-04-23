@@ -1,5 +1,8 @@
 import java.awt.*;
+<<<<<<< HEAD
 import java.util.*;
+=======
+>>>>>>> 9558b77e28e6210c4774b537d42a31ad5f8aa577
 
 import javax.swing.*;
 
@@ -77,6 +80,7 @@ public class MainMenu extends JFrame {
 	public void setTheme(boolean b) {
         this.darkTheme = b;
     }
+<<<<<<< HEAD
     
     public void makeGameScreen() {
         if (oneGameOnly > 0) {
@@ -114,3 +118,6 @@ public class MainMenu extends JFrame {
     }
 
 }
+=======
+}
+>>>>>>> 9558b77e28e6210c4774b537d42a31ad5f8aa577
