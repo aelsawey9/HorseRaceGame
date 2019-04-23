@@ -17,7 +17,6 @@ class AnimalPanel extends JPanel implements ActionListener, ItemListener {
     public Horse horse = new Horse();
     public Rabbit rabbit = new Rabbit();
     public Turtle turtle = new Turtle();
-    public Tick tick = new Tick();
 
     private JButton enterNames;
     private JLabel animalNameLabel;
@@ -223,12 +222,12 @@ class AnimalPanel extends JPanel implements ActionListener, ItemListener {
     public void itemStateChanged(ItemEvent e) {
         if (e.getStateChange() == ItemEvent.SELECTED) {
             if (e.getItemSelectable() == horseButton) {
-                horseButton.setSelectedIcon(new ImageIcon(this.tick.getImage()));
+                horseButton.setSelectedIcon(new ImageIcon(this.makeScaledImage("/images/tick.ong", 45, 45)));
                 this.selectedOneAnimal = true;
                 System.out.println("Aloha");
             }
             else if (e.getItemSelectable() == cheetahButton) {
-                cheetahButton.setSelectedIcon(new ImageIcon(this.tick.getImage()));
+                cheetahButton.setSelectedIcon(new ImageIcon(this.makeScaledImage("/images/tick.ong", 45, 45)));
                 this.selectedOneAnimal = true;
                 System.out.println("Aloha");
             }

@@ -32,7 +32,7 @@ public class GameScreen extends JFrame implements WindowListener {
         actualTrack.setGameScreen(this);
         JPanel test = new JPanel();
         test.setPreferredSize(new Dimension(402, 1080));
-        test.setBackground(Color.RED);
+        test.setBackground(Color.WHITE);
         JPanel east = new JPanel();
         east.setPreferredSize(new Dimension(402, 1080));
         // east.setBackground(Color.BLACK);
