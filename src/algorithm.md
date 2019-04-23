@@ -1,5 +1,4 @@
 # Animal Race
-<<<<<<< HEAD
 
 __Unfortunately, this project is incomplete due to a few reasons, one of them being that this project seemed way too ambitious for me especially that I took a chance to explore with GUIs. The program does compile and all however it is lacking a lot of functionality still. Below shows what the program was intended to look like however not all of the classes below are complete.__
 
@@ -53,9 +52,3 @@ It will extend Animal again and set the ImageIcons appropriately.
 This class would extend JPanel as well and print the track base image which would be used to show the actual animal race by overriding the paint method of the component and draw the animals there as well.
 
 
-
-
-=======
-## Goal:
-This should be an animal race where different breeds of animals race with multiple users hopefully able to play simultaneously through a server which I do not know how yet. However, if that does not work then I will make it a single player simplistic game with a GUI and possibly add a chat aspect to it in the GUI to make it more interesting and add this betting mechanism too and the powerups that you can buy to enhance your animal abilities.
->>>>>>> 9558b77e28e6210c4774b537d42a31ad5f8aa577

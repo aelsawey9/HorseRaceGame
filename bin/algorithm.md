@@ -52,5 +52,3 @@ It will extend Animal again and set the ImageIcons appropriately.
 This class would extend JPanel as well and print the track base image which would be used to show the actual animal race by overriding the paint method of the component and draw the animals there as well.
 
 
-
-
