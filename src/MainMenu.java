@@ -1,5 +1,5 @@
 import java.awt.*;
-import java.util.HashMap;
+import java.util.*;
 
 import javax.swing.*;
 
@@ -11,7 +11,8 @@ public class MainMenu extends JFrame {
     private boolean darkTheme = true;
     private int oneGameOnly = 1;
     private Visual actualTrack;
-    private HashMap<String, Animal> animalMap = new HashMap<String, Animal>();
+    private Player player;
+    private volatile HashMap<String, Animal> animalMap = new HashMap<String, Animal>();
 
     public MainMenu() {
         
@@ -27,7 +28,7 @@ public class MainMenu extends JFrame {
         gameName.setBackground(Color.BLACK);
         gameName.setForeground(Color.WHITE);
 
-        setLayout(new BorderLayout());
+        this.setLayout(new BorderLayout());
         this.options = new OptionsPanel();
         this.options.setMain(this);
         add(options, BorderLayout.CENTER);
@@ -39,6 +40,8 @@ public class MainMenu extends JFrame {
         setSize(800, 600);
         setLocationRelativeTo(null); // center the frame
         setVisible(true); // after all these modifications, make the frame visible
+
+        this.printHash();
     }
 
 	public void whiteTheme() {
@@ -81,6 +84,32 @@ public class MainMenu extends JFrame {
             this.game.setMain(this);
             this.game.gameBackground();
             this.oneGameOnly--;
+        }
+    }
+
+    public int getGameNumber() {
+        return this.oneGameOnly;
+    }
+
+    public void setGameNumber(int n) {
+        this.oneGameOnly = n;
+    }
+
+    public void makePlayer() {
+        //this.player = new Player();
+    }
+
+    public HashMap<String, Animal> getMap() {
+        return this.animalMap;
+    }
+
+    public void randomAnimals() {
+        Random rand = new Random();
+    }
+
+    public void printHash(){
+        for (String Key: animalMap.keySet()) {
+            System.out.println(Key);
         }
     }
 

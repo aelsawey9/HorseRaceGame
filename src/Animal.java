@@ -18,7 +18,15 @@ abstract class Animal {
         this.strideLength = 70;
         //this.bet = new Bet();
         this.animalName = "Animal" + counter;
-        counter++;
+        this.counter++;
+    }
+
+    public Image getImage() {
+        return this.image;
+    }
+
+    public String getName() {
+        return this.animalName;
     }
 
 }
