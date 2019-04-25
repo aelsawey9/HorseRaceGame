@@ -29,4 +29,8 @@ abstract class Animal {
         return this.animalName;
     }
 
+    public ImageIcon getImageIcon() {
+        return this.icon;
+    }
+
 }

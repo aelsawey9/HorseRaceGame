@@ -17,17 +17,17 @@ class AnimalPanel extends JPanel implements ActionListener, ItemListener {
     public Horse horse = new Horse();
     public Rabbit rabbit = new Rabbit();
     public Turtle turtle = new Turtle();
+    public Tick tick = new Tick();
 
     private JButton enterNames;
     private JLabel animalNameLabel;
     private JLabel playerNameLabel;
     private JTextField animalNameField;
     private JTextField playerNameField;
-    private JButton horseButton;
+    private JToggleButton horseButton;
     private JButton cheetahButton;
     private JButton turtleButton;
     private JButton rabbitButton;
-    private boolean animalSelected;
     private GridBagConstraints gc = new GridBagConstraints();
 
     public AnimalPanel() {
@@ -54,8 +54,6 @@ class AnimalPanel extends JPanel implements ActionListener, ItemListener {
 
         animalNameField = new JTextField(20);
         playerNameField = new JTextField(20);
-
-        // GridBagConstraints gc = new GridBagConstraints();
 
         ///////////////////// First Row /////////////////////
 
@@ -101,7 +99,6 @@ class AnimalPanel extends JPanel implements ActionListener, ItemListener {
         gc.gridx = 1;
         gc.gridy = 2;
         gc.anchor = GridBagConstraints.FIRST_LINE_START;
-        // gc.insets = new Insets(0, 0, 40, 0);
 
         this.add(enterNames, gc);
 
@@ -112,7 +109,7 @@ class AnimalPanel extends JPanel implements ActionListener, ItemListener {
     }
 
     public void setButtonIcons() {
-        this.horseButton = new JButton();//new ImageIcon(((new ImageIcon("/images/cheetah.png")).getImage()).getScaledInstance(45, 45, Image.SCALE_DEFAULT)));
+        this.horseButton = new JToggleButton(UIManager.getIcon(this.tick.getImage()));
         horseButton.setIcon(new ImageIcon(this.horse.getImage()));
         horseButton.setBackground(Color.ORANGE);
         horseButton.addActionListener(this);
@@ -133,6 +130,7 @@ class AnimalPanel extends JPanel implements ActionListener, ItemListener {
         cheetahButton.setBackground(Color.ORANGE);
         cheetahButton.addActionListener(this);
         cheetahButton.setFocusPainted(false);
+        cheetahButton.setActionCommand("Cheetah");
 
         gc.gridx = 2;
         gc.gridy = 1;
@@ -159,6 +157,7 @@ class AnimalPanel extends JPanel implements ActionListener, ItemListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+
         if (e.getSource() == this.enterNames) {
             if (this.animalNameField.getText() != "0" && this.playerNameField.getText() != "0") {
                 System.out.println("Aloha");
@@ -190,18 +189,18 @@ class AnimalPanel extends JPanel implements ActionListener, ItemListener {
         } else if (e.getActionCommand().equals("Horse")) {
             this.setVisible(false);
             this.gameScreen.getMain().getMap().put(animalNameField.getText(), new Horse(animalNameField.getText()));
-            horseButton.setIcon(new ImageIcon(makeScaledImage("/images/turtle2.png", 20, 25)));
-            System.out.println("Aloha");
+            horseButton.setSelectedIcon(UIManager.getIcon(this.tick.getImage()));
+            System.out.println("horse action listener");
             this.selectedOneAnimal = true;
             this.setVisible(true);
             return;
         }
-        else if (e.getSource() == this.cheetahButton) {
+        else if (e.getActionCommand().equals("Cheetah")) {
             this.setVisible(false);
             this.gameScreen.getMain().getMap().put(animalNameField.getText(), new Cheetah(animalNameField.getText()));
-            horseButton.setIcon(new ImageIcon(makeScaledImage("/images/tick.png", 45, 45)));
+            horseButton.setIcon(new ImageIcon(this.tick.getImage()));
             this.selectedOneAnimal = true;
-            System.out.println("Aloha");
+            System.out.println("cheetah");
             this.setVisible(true);
             return;
         }
@@ -222,14 +221,14 @@ class AnimalPanel extends JPanel implements ActionListener, ItemListener {
     public void itemStateChanged(ItemEvent e) {
         if (e.getStateChange() == ItemEvent.SELECTED) {
             if (e.getItemSelectable() == horseButton) {
-                horseButton.setSelectedIcon(new ImageIcon(this.makeScaledImage("/images/tick.ong", 45, 45)));
+                horseButton.setIcon(new ImageIcon(this.makeScaledImage("/images/tick.png", 45, 45)));
                 this.selectedOneAnimal = true;
-                System.out.println("Aloha");
+                System.out.println("horse");
             }
             else if (e.getItemSelectable() == cheetahButton) {
-                cheetahButton.setSelectedIcon(new ImageIcon(this.makeScaledImage("/images/tick.ong", 45, 45)));
+                cheetahButton.setIcon(new ImageIcon(this.makeScaledImage("/images/tick.png", 45, 45)));
                 this.selectedOneAnimal = true;
-                System.out.println("Aloha");
+                System.out.println("cheetah");
             }
         }
     }
