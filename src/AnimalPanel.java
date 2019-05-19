@@ -3,7 +3,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-
 import javax.swing.*;
 
 class AnimalPanel extends JPanel implements ActionListener, ItemListener {
@@ -20,7 +19,7 @@ class AnimalPanel extends JPanel implements ActionListener, ItemListener {
     public Tick tick = new Tick();
 
     private JButton enterNames;
-    private JLabel animalNameLabel;
+    private JLabel animalNameLabel; 
     private JLabel playerNameLabel;
     private JTextField animalNameField;
     private JTextField playerNameField;
@@ -29,6 +28,7 @@ class AnimalPanel extends JPanel implements ActionListener, ItemListener {
     private JButton turtleButton;
     private JButton rabbitButton;
     private GridBagConstraints gc = new GridBagConstraints();
+    //private ToggleGroup animalButtons = new ToggleGroup();
 
     public AnimalPanel() {
         super(new GridBagLayout());
@@ -109,12 +109,12 @@ class AnimalPanel extends JPanel implements ActionListener, ItemListener {
     }
 
     public void setButtonIcons() {
-        this.horseButton = new JToggleButton(UIManager.getIcon(this.tick.getImage()));
-        horseButton.setIcon(new ImageIcon(this.horse.getImage()));
+        this.horseButton = new JToggleButton(new ImageIcon(this.horse.getImage()));
+        //horseButton.setIcon(new ImageIcon(this.horse.getImage()));
         horseButton.setBackground(Color.ORANGE);
-        horseButton.addActionListener(this);
+        horseButton.addItemListener(this);
         horseButton.setFocusPainted(false);
-        horseButton.setActionCommand("Horse");
+        //horseButton.setActionCommand("Horse");
         this.turtleButton = new JButton();
         turtleButton.setIcon(new ImageIcon(this.turtle.getImage()));
         turtleButton.setBackground(Color.ORANGE);
@@ -159,42 +159,20 @@ class AnimalPanel extends JPanel implements ActionListener, ItemListener {
     public void actionPerformed(ActionEvent e) {
 
         if (e.getSource() == this.enterNames) {
-            if (this.animalNameField.getText() != "0" && this.playerNameField.getText() != "0") {
-                System.out.println("Aloha");
-                JFrame popup = new JFrame("Well done");
-                JLabel warning = new JLabel("Thank you now select an animal if you haven't already", SwingConstants.CENTER);
-                popup.setBackground(Color.BLACK);
-                warning.setFont(new Font("Verdana", Font.BOLD, 25));
-                warning.setBackground(Color.GREEN);
-                warning.setOpaque(true);
-                popup.add(warning);
-                popup.setSize(1200, 400);
-                popup.setLocationRelativeTo(null);
-                popup.setVisible(true); 
-                this.gameScreen.getMain().printHash();
+            if ( !this.animalNameField.getText().equals("") && !this.playerNameField.getText().equals("") && selectedOneAnimal == true) {
+                JOptionPane.showMessageDialog(null, "The player and animal names have been submitted; make sure to select an animal to start the game", "Names Submitted", JOptionPane.INFORMATION_MESSAGE);
+            }
+            else if (horseButton.isSelected()) {
+                //horseButton.setIcon(new ImageIcon(this.makeScaledImage("/images/tick.png", 45, 45)));
+                System.out.println("Item event is working for horse");  //this is not working, we can't tell that horse button is the one selected
+                horseButton.setIcon(new ImageIcon(this.tick.getImage()));
+                this.selectedOneAnimal = true;
+                System.out.println("horse");
             }
             else {
-                this.selectedOneAnimal = false;
-                JFrame popup = new JFrame("Alert");
-                JLabel warning = new JLabel("Please enter an animal name, player name and select an animal to proceed", SwingConstants.CENTER);
-                popup.setBackground(Color.BLACK);
-                warning.setFont(new Font("Verdana", Font.BOLD, 25));
-                warning.setBackground(Color.RED);
-                warning.setOpaque(true);
-                popup.add(warning);
-                popup.setSize(1200, 400);
-                popup.setLocationRelativeTo(null);
-                popup.setVisible(true);
+                JOptionPane.showMessageDialog(null, "Please enter an animal name, player name and select an animal to proceed", "Data Entry Error", JOptionPane.INFORMATION_MESSAGE);
             }
-        } else if (e.getActionCommand().equals("Horse")) {
-            this.setVisible(false);
-            this.gameScreen.getMain().getMap().put(animalNameField.getText(), new Horse(animalNameField.getText()));
-            horseButton.setSelectedIcon(UIManager.getIcon(this.tick.getImage()));
-            System.out.println("horse action listener");
-            this.selectedOneAnimal = true;
-            this.setVisible(true);
-            return;
-        }
+        } 
         else if (e.getActionCommand().equals("Cheetah")) {
             this.setVisible(false);
             this.gameScreen.getMain().getMap().put(animalNameField.getText(), new Cheetah(animalNameField.getText()));
@@ -220,8 +198,10 @@ class AnimalPanel extends JPanel implements ActionListener, ItemListener {
     @Override
     public void itemStateChanged(ItemEvent e) {
         if (e.getStateChange() == ItemEvent.SELECTED) {
-            if (e.getItemSelectable() == horseButton) {
-                horseButton.setIcon(new ImageIcon(this.makeScaledImage("/images/tick.png", 45, 45)));
+            if (horseButton.isSelected()) {
+                //horseButton.setIcon(new ImageIcon(this.makeScaledImage("/images/tick.png", 45, 45)));
+                System.out.println("Item event is working for horse");  //this is not working, we can't tell that horse button is the one selected
+                horseButton.setIcon(new ImageIcon(this.tick.getImage()));
                 this.selectedOneAnimal = true;
                 System.out.println("horse");
             }

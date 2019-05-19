@@ -40,7 +40,7 @@ public class MainMenu extends JFrame {
         setLocationRelativeTo(null); // center the frame
         setVisible(true); // after all these modifications, make the frame visible
 
-        this.printHash();
+        //this.printHash();
     }
 
 	public void whiteTheme() {
@@ -110,6 +110,14 @@ public class MainMenu extends JFrame {
         for (String Key: animalMap.keySet()) {
             System.out.println(Key);
         }
+    }
+
+    public OptionsPanel getOptionsPanel() {
+        return this.options;
+    }
+    
+    public static void main(String[] args) throws Exception{
+        new App();
     }
 
 }

@@ -1,2 +1,2 @@
-Main-Class: App.java
+Main-Class: MainMenu
 
