@@ -184,7 +184,7 @@ class AnimalPanel extends JPanel implements ActionListener, ItemListener {
             this.gameScreen.actualTrack.animalSelectedToPaint(this.gameScreen.getAnimalPanel().cheetah.getImage());
             System.out.println("cheetah action");
             this.setVisible(true);
-            //Once selected maybe add a message up top saying play or something and set the panel to be invisible
+            //Once selected maybe add a message up top saying play or something and set the panel to be invisible for effect
             return;
         }
 
@@ -205,7 +205,7 @@ class AnimalPanel extends JPanel implements ActionListener, ItemListener {
                 System.out.println("horse");
             }
             else if (e.getItemSelectable() == cheetahButton) {
-                cheetahButton.setIcon(new ImageIcon(this.makeScaledImage("/images/tick.png", 45, 45)));
+                //cheetahButton.setIcon(new ImageIcon(this.makeScaledImage("/images/tick.png", 45, 45)));
                 this.selectedOneAnimal = true;
                 System.out.println("cheetah");
             }
