@@ -194,12 +194,6 @@ class AnimalPanel extends JPanel implements ActionListener, ItemListener {
         this.gameScreen = g;
     }
 
-    public Image makeScaledImage(String src, int width, int height) {
-        ImageIcon tIcon = new ImageIcon(Visual.class.getResource(src));
-        Image img = tIcon.getImage().getScaledInstance(width, height, Image.SCALE_DEFAULT);
-        return img;
-    }
-
     @Override
     public void itemStateChanged(ItemEvent e) {
         if (e.getStateChange() == ItemEvent.SELECTED) {
