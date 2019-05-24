@@ -6,6 +6,9 @@ class Visual extends JPanel {
 
     private ImageIcon track = new ImageIcon(Visual.class.getResource("/images/track.png"));
     private GameScreen gameScreen;
+    private Graphics graphics;
+    private Image image;
+    //private ImageIcon horseImage = gameScreen.getAnimalPanel().horse.getImageIcon();
 
 
     /*
@@ -24,8 +27,15 @@ class Visual extends JPanel {
     @Override 
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+        this.graphics = g;
         track.paintIcon(this, g, 0, 0);
-        g.drawImage(this.gameScreen.getAnimalPanel().makeScaledImage("/images/horse.png", 55, 50), 500,100, this);
+        if (this.image != null) {
+            try {
+                g.drawImage(this.image, 55,50, null);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
 
     }
 
@@ -33,5 +43,13 @@ class Visual extends JPanel {
         this.gameScreen = g;
     }
 
+    public Graphics getGraphics() {
+        return this.graphics;
+    }
+
+    public void animalSelectedToPaint(Image i) {
+        this.image = i;
+        repaint();
+    }
 
 }

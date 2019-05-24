@@ -35,6 +35,7 @@ class AnimalPanel extends JPanel implements ActionListener, ItemListener {
 
         this.setPreferredSize(new Dimension(1536, 170));
         this.setBackground(Color.WHITE);
+        //set border inset
         this.setBorder(BorderFactory.createTitledBorder("Enter names and select animal to start: "));
 
         this.enterNames = new JButton("Let's go");
@@ -178,8 +179,12 @@ class AnimalPanel extends JPanel implements ActionListener, ItemListener {
             this.gameScreen.getMain().getMap().put(animalNameField.getText(), new Cheetah(animalNameField.getText()));
             horseButton.setIcon(new ImageIcon(this.tick.getImage()));
             this.selectedOneAnimal = true;
-            System.out.println("cheetah");
+            //this.(new ImageIcon(cheetah.image));
+            //new ImageIcon(gameScreen.getAnimalPanel().cheetah.getImage()).paintIcon(this.gameScreen.actualTrack, this.gameScreen.actualTrack.getGraphics(),55, 50);
+            this.gameScreen.actualTrack.animalSelectedToPaint(this.gameScreen.getAnimalPanel().cheetah.getImage());
+            System.out.println("cheetah action");
             this.setVisible(true);
+            //Once selected maybe add a message up top saying play or something and set the panel to be invisible
             return;
         }
 

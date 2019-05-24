@@ -116,7 +116,7 @@ public class MainMenu extends JFrame {
         return this.options;
     }
     
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
         new App();
     }
 
