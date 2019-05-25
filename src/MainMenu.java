@@ -104,7 +104,7 @@ public class MainMenu extends JFrame {
 
     public void randomAnimals() {
         Random rand = new Random();
-        //places random animals once user selects animals
+        //places random animals once user selects animals, in order to start the game
     }
 
     public void printHash(){
