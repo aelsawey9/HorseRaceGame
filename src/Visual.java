@@ -50,6 +50,7 @@ class Visual extends JPanel {
     public void animalSelectedToPaint(Image i) {
         this.image = i;
         repaint();
+        this.image = null;
     }
 
 }

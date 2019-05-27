@@ -119,21 +119,22 @@ class AnimalPanel extends JPanel implements ActionListener, ItemListener {
 
     public void setButtonIcons() {
         this.horseButton = new JToggleButton(new ImageIcon(this.horse.getImage()));
-        // horseButton.setIcon(new ImageIcon(this.horse.getImage()));
         horseButton.setBackground(Color.ORANGE);
         horseButton.addItemListener(this);
         horseButton.setFocusPainted(false);
-        // horseButton.setActionCommand("Horse");
+        horseButton.setActionCommand("Horse");
         this.turtleButton = new JToggleButton();
         turtleButton.setIcon(new ImageIcon(this.turtle.getImage()));
         turtleButton.setBackground(Color.ORANGE);
         turtleButton.addItemListener(this);
         turtleButton.setFocusPainted(false);
+        turtleButton.setActionCommand("Turtle");
         this.rabbitButton = new JToggleButton();
         rabbitButton.setIcon(new ImageIcon(this.rabbit.getImage()));
         rabbitButton.setBackground(Color.ORANGE);
         rabbitButton.addItemListener(this);
         rabbitButton.setFocusPainted(false);
+        rabbitButton.setActionCommand("Rabbit");
         this.cheetahButton = new JToggleButton();
         cheetahButton.setIcon(new ImageIcon(this.cheetah.getImage()));
         cheetahButton.setBackground(Color.ORANGE);
@@ -238,18 +239,49 @@ class AnimalPanel extends JPanel implements ActionListener, ItemListener {
 
     @Override
     public void itemStateChanged(ItemEvent e) {
-        System.out.println("a toggle button has been messed with");
-        if (e.getSource() == horseButton) {
-            System.out.println("Horse toggle was messed with");
+        JToggleButton pressedButton = (JToggleButton) e.getSource();
+        if (pressedButton.getActionCommand().equals(horseButton.getActionCommand())) {
             if (e.getStateChange() == ItemEvent.SELECTED) {
-                System.out.println("Horse toggle selected");
                 selectedOneAnimal = true;
                 horseButton.setBackground(Color.GREEN);
                 this.gameScreen.actualTrack.animalSelectedToPaint(this.horse.getImage());
+                System.out.println("Horse toggle selected");
                 animalSelectedPanel();
             }
             else if (e.getStateChange() == ItemEvent.DESELECTED) {
-                System.out.println("Horse toggle deselected");
+            }
+        }
+        else if (pressedButton.getActionCommand().equals(cheetahButton.getActionCommand())) {
+            if (e.getStateChange() == ItemEvent.SELECTED) {
+                selectedOneAnimal = true;
+                horseButton.setBackground(Color.GREEN);
+                this.gameScreen.actualTrack.animalSelectedToPaint(this.cheetah.getImage());
+                System.out.println("Cheetah toggle selected");
+                animalSelectedPanel();
+            }
+            else if (e.getStateChange() == ItemEvent.DESELECTED) {
+            }
+        }
+        else if (pressedButton.getActionCommand().equals(turtleButton.getActionCommand())) {
+            if (e.getStateChange() == ItemEvent.SELECTED) {
+                selectedOneAnimal = true;
+                horseButton.setBackground(Color.GREEN);
+                this.gameScreen.actualTrack.animalSelectedToPaint(this.turtle.getImage());
+                System.out.println("Turtle toggle selected");
+                animalSelectedPanel();
+            }
+            else if (e.getStateChange() == ItemEvent.DESELECTED) {
+            }
+        }
+        else if (pressedButton.getActionCommand().equals(rabbitButton.getActionCommand())) {
+            if (e.getStateChange() == ItemEvent.SELECTED) {
+                selectedOneAnimal = true;
+                horseButton.setBackground(Color.GREEN);
+                this.gameScreen.actualTrack.animalSelectedToPaint(this.rabbit.getImage());
+                System.out.println("Rabbit toggle selected");
+                animalSelectedPanel();
+            }
+            else if (e.getStateChange() == ItemEvent.DESELECTED) {
             }
         }
     }
