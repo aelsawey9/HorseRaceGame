@@ -254,7 +254,7 @@ class AnimalPanel extends JPanel implements ActionListener, ItemListener {
         else if (pressedButton.getActionCommand().equals(cheetahButton.getActionCommand())) {
             if (e.getStateChange() == ItemEvent.SELECTED) {
                 selectedOneAnimal = true;
-                horseButton.setBackground(Color.GREEN);
+                horseButton.setBackground(Color.RED);
                 this.gameScreen.actualTrack.animalSelectedToPaint(this.cheetah.getImage());
                 System.out.println("Cheetah toggle selected");
                 animalSelectedPanel();
@@ -265,7 +265,7 @@ class AnimalPanel extends JPanel implements ActionListener, ItemListener {
         else if (pressedButton.getActionCommand().equals(turtleButton.getActionCommand())) {
             if (e.getStateChange() == ItemEvent.SELECTED) {
                 selectedOneAnimal = true;
-                horseButton.setBackground(Color.GREEN);
+                turtleButton.setBackground(Color.GREEN);
                 this.gameScreen.actualTrack.animalSelectedToPaint(this.turtle.getImage());
                 System.out.println("Turtle toggle selected");
                 animalSelectedPanel();
@@ -276,7 +276,7 @@ class AnimalPanel extends JPanel implements ActionListener, ItemListener {
         else if (pressedButton.getActionCommand().equals(rabbitButton.getActionCommand())) {
             if (e.getStateChange() == ItemEvent.SELECTED) {
                 selectedOneAnimal = true;
-                horseButton.setBackground(Color.GREEN);
+                rabbitButton.setBackground(Color.GREEN);
                 this.gameScreen.actualTrack.animalSelectedToPaint(this.rabbit.getImage());
                 System.out.println("Rabbit toggle selected");
                 animalSelectedPanel();
